@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TextEntry.h"
 
-@interface TextFieldViewController : UIViewController
+@interface TextFieldViewController : UIViewController <UITextFieldDelegate>
 @property (strong, nonatomic) TextEntry *textEntry;
 @property (strong, nonatomic) UILabel *textLabel;
 @property (strong, nonatomic) UITextField *emptyTextField;

@@ -30,10 +30,25 @@
     
     [self.view addSubview:self.emptyTextField];
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.emptyTextField.delegate = self;
 }
 
--(void)viewDidAppear:(BOOL)animated {
-//    [self.emptyTextField becomeFirstResponder];
+// animates textfield jumps when keyboard pops up
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    self.emptyTextField.frame = CGRectMake(self.emptyTextField.frame.origin.x, (self.emptyTextField.frame.origin.y - 100.0), self.emptyTextField.frame.size.width, self.emptyTextField.frame.size.height);
+    [UIView commitAnimations];
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.emptyTextField resignFirstResponder];
+    
+    return YES;
+}
+
 
 @end
