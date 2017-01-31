@@ -1,0 +1,323 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		614F9DFC1E3AC3FC003C9721 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 614F9DFB1E3AC3FC003C9721 /* main.m */; };
+		614F9DFF1E3AC3FC003C9721 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 614F9DFE1E3AC3FC003C9721 /* AppDelegate.m */; };
+		614F9E051E3AC3FC003C9721 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 614F9E031E3AC3FC003C9721 /* Main.storyboard */; };
+		614F9E071E3AC3FC003C9721 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 614F9E061E3AC3FC003C9721 /* Assets.xcassets */; };
+		614F9E0A1E3AC3FC003C9721 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 614F9E081E3AC3FC003C9721 /* LaunchScreen.storyboard */; };
+		614F9E131E3AC772003C9721 /* TextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 614F9E121E3AC772003C9721 /* TextFieldViewController.m */; };
+		614F9E161E3AC881003C9721 /* TextEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 614F9E151E3AC881003C9721 /* TextEntry.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		614F9DF71E3AC3FC003C9721 /* SpotThePalindrome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotThePalindrome.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		614F9DFB1E3AC3FC003C9721 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		614F9DFD1E3AC3FC003C9721 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		614F9DFE1E3AC3FC003C9721 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		614F9E041E3AC3FC003C9721 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		614F9E061E3AC3FC003C9721 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		614F9E091E3AC3FC003C9721 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		614F9E0B1E3AC3FC003C9721 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		614F9E111E3AC772003C9721 /* TextFieldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldViewController.h; sourceTree = "<group>"; };
+		614F9E121E3AC772003C9721 /* TextFieldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldViewController.m; sourceTree = "<group>"; };
+		614F9E141E3AC881003C9721 /* TextEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextEntry.h; sourceTree = "<group>"; };
+		614F9E151E3AC881003C9721 /* TextEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextEntry.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		614F9DF41E3AC3FC003C9721 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		614F9DEE1E3AC3FC003C9721 = {
+			isa = PBXGroup;
+			children = (
+				614F9DF91E3AC3FC003C9721 /* SpotThePalindrome */,
+				614F9DF81E3AC3FC003C9721 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		614F9DF81E3AC3FC003C9721 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				614F9DF71E3AC3FC003C9721 /* SpotThePalindrome.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		614F9DF91E3AC3FC003C9721 /* SpotThePalindrome */ = {
+			isa = PBXGroup;
+			children = (
+				614F9DFD1E3AC3FC003C9721 /* AppDelegate.h */,
+				614F9DFE1E3AC3FC003C9721 /* AppDelegate.m */,
+				614F9E031E3AC3FC003C9721 /* Main.storyboard */,
+				614F9E061E3AC3FC003C9721 /* Assets.xcassets */,
+				614F9E081E3AC3FC003C9721 /* LaunchScreen.storyboard */,
+				614F9E0B1E3AC3FC003C9721 /* Info.plist */,
+				614F9DFA1E3AC3FC003C9721 /* Supporting Files */,
+				614F9E111E3AC772003C9721 /* TextFieldViewController.h */,
+				614F9E121E3AC772003C9721 /* TextFieldViewController.m */,
+				614F9E141E3AC881003C9721 /* TextEntry.h */,
+				614F9E151E3AC881003C9721 /* TextEntry.m */,
+			);
+			path = SpotThePalindrome;
+			sourceTree = "<group>";
+		};
+		614F9DFA1E3AC3FC003C9721 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				614F9DFB1E3AC3FC003C9721 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		614F9DF61E3AC3FC003C9721 /* SpotThePalindrome */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 614F9E0E1E3AC3FC003C9721 /* Build configuration list for PBXNativeTarget "SpotThePalindrome" */;
+			buildPhases = (
+				614F9DF31E3AC3FC003C9721 /* Sources */,
+				614F9DF41E3AC3FC003C9721 /* Frameworks */,
+				614F9DF51E3AC3FC003C9721 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpotThePalindrome;
+			productName = SpotThePalindrome;
+			productReference = 614F9DF71E3AC3FC003C9721 /* SpotThePalindrome.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		614F9DEF1E3AC3FC003C9721 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "Kylie Tram Le";
+				TargetAttributes = {
+					614F9DF61E3AC3FC003C9721 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 4M3QJKH5SU;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 614F9DF21E3AC3FC003C9721 /* Build configuration list for PBXProject "SpotThePalindrome" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 614F9DEE1E3AC3FC003C9721;
+			productRefGroup = 614F9DF81E3AC3FC003C9721 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				614F9DF61E3AC3FC003C9721 /* SpotThePalindrome */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		614F9DF51E3AC3FC003C9721 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				614F9E0A1E3AC3FC003C9721 /* LaunchScreen.storyboard in Resources */,
+				614F9E071E3AC3FC003C9721 /* Assets.xcassets in Resources */,
+				614F9E051E3AC3FC003C9721 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		614F9DF31E3AC3FC003C9721 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				614F9E131E3AC772003C9721 /* TextFieldViewController.m in Sources */,
+				614F9DFF1E3AC3FC003C9721 /* AppDelegate.m in Sources */,
+				614F9DFC1E3AC3FC003C9721 /* main.m in Sources */,
+				614F9E161E3AC881003C9721 /* TextEntry.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		614F9E031E3AC3FC003C9721 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				614F9E041E3AC3FC003C9721 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		614F9E081E3AC3FC003C9721 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				614F9E091E3AC3FC003C9721 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		614F9E0C1E3AC3FC003C9721 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		614F9E0D1E3AC3FC003C9721 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		614F9E0F1E3AC3FC003C9721 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4M3QJKH5SU;
+				INFOPLIST_FILE = SpotThePalindrome/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kylietle.SpotThePalindrome;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		614F9E101E3AC3FC003C9721 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4M3QJKH5SU;
+				INFOPLIST_FILE = SpotThePalindrome/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kylietle.SpotThePalindrome;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		614F9DF21E3AC3FC003C9721 /* Build configuration list for PBXProject "SpotThePalindrome" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				614F9E0C1E3AC3FC003C9721 /* Debug */,
+				614F9E0D1E3AC3FC003C9721 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		614F9E0E1E3AC3FC003C9721 /* Build configuration list for PBXNativeTarget "SpotThePalindrome" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				614F9E0F1E3AC3FC003C9721 /* Debug */,
+				614F9E101E3AC3FC003C9721 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 614F9DEF1E3AC3FC003C9721 /* Project object */;
+}
