@@ -44,7 +44,19 @@
     [UIView commitAnimations];
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    self.emptyTextField.frame = CGRectMake(self.emptyTextField.frame.origin.x, (self.emptyTextField.frame.origin.y + 100.0), self.emptyTextField.frame.size.width, self.emptyTextField.frame.size.height);
+    [UIView commitAnimations];
+}
+
+// make keyboard go away
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    self.textEntry.enteredString = self.emptyTextField.text;
+    
     [self.emptyTextField resignFirstResponder];
     
     return YES;
