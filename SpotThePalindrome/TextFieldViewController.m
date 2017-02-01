@@ -32,6 +32,18 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.emptyTextField.delegate = self;
+    
+    // add tap gesture
+    UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+              initWithTarget:self action:@selector(handleSingleTap:)];
+    tap.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tap];
+}
+
+// responds to tap--dismiss keyboard & activate animation
+- (void)handleSingleTap:(UITapGestureRecognizer *) sender
+{
+    [self.view endEditing:YES];
 }
 
 // animates textfield jumps when keyboard pops up
