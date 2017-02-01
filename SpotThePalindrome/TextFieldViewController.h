@@ -11,6 +11,6 @@
 
 @interface TextFieldViewController : UIViewController <UITextFieldDelegate>
 @property (strong, nonatomic) TextEntry *textEntry;
-@property (strong, nonatomic) UILabel *textLabel;
+@property (strong, nonatomic) UIButton *checkButton;
 @property (strong, nonatomic) UITextField *emptyTextField;
 @end

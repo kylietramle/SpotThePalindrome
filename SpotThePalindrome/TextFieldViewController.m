@@ -21,15 +21,20 @@
     [super viewDidLoad];
     TextEntry *textEntry = [[TextEntry alloc] init];
     
-    CGRect textFieldRect = CGRectMake(0, 0, 200, 200 );
+    CGRect textFieldRect = CGRectMake(0, 0, 200, 180 );
     self.emptyTextField = [[UITextField alloc] initWithFrame:textFieldRect];
     self.emptyTextField.center = self.view.center;
     self.emptyTextField.borderStyle = UITextBorderStyleRoundedRect;
     self.emptyTextField.placeholder = @"Palindrome Meee";
     self.emptyTextField.returnKeyType = UIReturnKeyDone;
     
+    CGRect buttonRect = CGRectMake(280, 290, 100, 100);
+    self.checkButton = [[UIButton alloc] initWithFrame:buttonRect];
+    [self.checkButton setTitle:@"BAM" forState:UIControlStateNormal];
+    
     [self.view addSubview:self.emptyTextField];
-    self.view.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.checkButton];
+    self.view.backgroundColor = [UIColor blueColor];
     
     self.emptyTextField.delegate = self;
     
@@ -53,6 +58,7 @@
     [UIView setAnimationDuration:0.5];
     [UIView setAnimationBeginsFromCurrentState:YES];
     self.emptyTextField.frame = CGRectMake(self.emptyTextField.frame.origin.x, (self.emptyTextField.frame.origin.y - 100.0), self.emptyTextField.frame.size.width, self.emptyTextField.frame.size.height);
+    self.checkButton.frame = CGRectMake(self.checkButton.frame.origin.x, (self.checkButton.frame.origin.y - 100.0), self.checkButton.frame.size.width, self.checkButton.frame.size.height);
     [UIView commitAnimations];
 }
 
@@ -62,6 +68,7 @@
     [UIView setAnimationDuration:0.5];
     [UIView setAnimationBeginsFromCurrentState:YES];
     self.emptyTextField.frame = CGRectMake(self.emptyTextField.frame.origin.x, (self.emptyTextField.frame.origin.y + 100.0), self.emptyTextField.frame.size.width, self.emptyTextField.frame.size.height);
+     self.checkButton.frame = CGRectMake(self.checkButton.frame.origin.x, (self.checkButton.frame.origin.y + 100.0), self.checkButton.frame.size.width, self.checkButton.frame.size.height);
     [UIView commitAnimations];
 }
 
