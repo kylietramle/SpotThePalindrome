@@ -31,6 +31,10 @@
     CGRect buttonRect = CGRectMake(280, 290, 100, 100);
     self.checkButton = [[UIButton alloc] initWithFrame:buttonRect];
     [self.checkButton setTitle:@"BAM" forState:UIControlStateNormal];
+    [self.checkButton addTarget:self
+               action:@selector(checkButtonPresssed:)
+     forControlEvents:UIControlEventTouchUpInside];
+    
     
     [self.view addSubview:self.emptyTextField];
     [self.view addSubview:self.checkButton];
@@ -43,6 +47,10 @@
               initWithTarget:self action:@selector(handleSingleTap:)];
     tap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap];
+}
+
+- (void) checkButtonPressed {
+    
 }
 
 // responds to tap--dismiss keyboard & activate animation
