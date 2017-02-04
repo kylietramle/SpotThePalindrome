@@ -8,6 +8,7 @@
 
 #import "TextFieldViewController.h"
 #import "TextEntry.h"
+#import "MBProgressHUD.h"
 
 @interface TextFieldViewController ()
 
@@ -15,12 +16,11 @@
 
 @implementation TextFieldViewController
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     TextEntry *textEntry = [[TextEntry alloc] init];
     
+    //text field
     CGRect textFieldRect = CGRectMake(0, 0, 200, 180 );
     self.emptyTextField = [[UITextField alloc] initWithFrame:textFieldRect];
     self.emptyTextField.center = self.view.center;
@@ -28,11 +28,12 @@
     self.emptyTextField.placeholder = @"Palindrome Meee";
     self.emptyTextField.returnKeyType = UIReturnKeyDone;
     
+    // button
     CGRect buttonRect = CGRectMake(280, 290, 100, 100);
     self.checkButton = [[UIButton alloc] initWithFrame:buttonRect];
     [self.checkButton setTitle:@"BAM" forState:UIControlStateNormal];
     [self.checkButton addTarget:self
-               action:@selector(checkButtonPresssed:)
+               action:@selector(checkButtonPressed:)
      forControlEvents:UIControlEventTouchUpInside];
     
     
@@ -42,15 +43,51 @@
     
     self.emptyTextField.delegate = self;
     
-    // add tap gesture
+    // add tap gesture to dismiss keyboard
     UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
               initWithTarget:self action:@selector(handleSingleTap:)];
     tap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap];
+    
 }
 
-- (void) checkButtonPressed {
+- (IBAction)checkButtonPressed:(UIButton *)sender {
+
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view.window animated:YES];
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
+        [self palindromeCheck];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES];
+        });
+    });
+}
+
+-(BOOL)palindromeCheck:(NSString *)string {
+    NSMutableString *readyString = [[self convertStringForCheck:string] mutableCopy];
     
+    NSArray *arrayOfChar = [readyString componentsSeparatedByString:@","];
+    NSUInteger length = [arrayOfChar count];
+    for (int j = 0; j < length; j++) {
+        if (arrayOfChar[j] != arrayOfChar[(length -1 - j)]) {
+            return NO;
+        }
+    }
+    
+    return YES;
+}
+
+-(NSString *)convertStringForCheck:(NSString *)userEntry {
+    
+    NSArray *punctuations = @[ @".", @",", @"!", @"?", @":", @";" ];
+    NSString *withoutPunctuation = [userEntry copy];
+    for (NSUInteger i = 0; i < [punctuations count]; i++) {
+        NSString *punctuation = punctuations[i];
+        withoutPunctuation = [withoutPunctuation stringByReplacingOccurrencesOfString:punctuation withString:@""];
+    }
+    NSString *spaceless = [withoutPunctuation stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *lowercase = [spaceless lowercaseString];
+    
+    return lowercase;
 }
 
 // responds to tap--dismiss keyboard & activate animation

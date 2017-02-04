@@ -9,8 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "TextEntry.h"
 
+@class MBProgressHUD;
+
 @interface TextFieldViewController : UIViewController <UITextFieldDelegate>
 @property (strong, nonatomic) TextEntry *textEntry;
 @property (strong, nonatomic) UIButton *checkButton;
 @property (strong, nonatomic) UITextField *emptyTextField;
+@property (strong, nonatomic) MBProgressHUD *HUD;
+
+-(BOOL)palindromeCheck:(NSString *)string;
+-(NSString *)convertStringForCheck:(NSString *)userEntry;
 @end
