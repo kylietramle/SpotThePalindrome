@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface TextEntry : NSObject
-@property (strong, nonatomic) NSString *enteredString;
+@property (strong, nonatomic) NSString *textEntry;
 @end

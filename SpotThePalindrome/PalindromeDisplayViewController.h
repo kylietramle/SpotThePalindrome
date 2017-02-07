@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TextEntry.h"
 
 @interface PalindromeDisplayViewController : UIViewController
-
+@property (strong, nonatomic) TextEntry *textEntry;
 @end

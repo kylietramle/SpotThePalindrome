@@ -12,7 +12,7 @@
 - (id) init {
     self = [super init];
     if (self) {
-        self.enteredString = @"Nothing yet";
+        self.textEntry = @"Nothing yet";
     }
     
     return self;

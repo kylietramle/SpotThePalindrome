@@ -9,6 +9,7 @@
 #import "TextFieldViewController.h"
 #import "TextEntry.h"
 #import "MBProgressHUD.h"
+#import "PalindromeDisplayViewController.h"
 
 @interface TextFieldViewController ()
 
@@ -49,26 +50,41 @@
     tap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap];
     
+    NSLog(@"%d", [self palindromeCheck: @"mommy"]);
+    NSLog(@"%d", [self palindromeCheck: @"He ll."]);
+    
 }
 
 - (IBAction)checkButtonPressed:(UIButton *)sender {
 
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view.window animated:YES];
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
-        [self palindromeCheck];
+        [self palindromeCheck:self.emptyTextField.text];
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hideAnimated:YES];
         });
     });
+    
+    PalindromeDisplayViewController *palindromeDisplayVC = [[PalindromeDisplayViewController alloc] init];
+    palindromeDisplayVC.textEntry = self.emptyTextField.text;
+    [self.navigationController pushViewController:palindromeDisplayVC animated:YES];
 }
 
 -(BOOL)palindromeCheck:(NSString *)string {
     NSMutableString *readyString = [[self convertStringForCheck:string] mutableCopy];
     
-    NSArray *arrayOfChar = [readyString componentsSeparatedByString:@","];
+    NSMutableArray *arrayOfChar = [[NSMutableArray alloc] initWithCapacity:[readyString length]];
+    for (int i=0; i < [readyString length]; i++) {
+        NSString *ichar  = [NSString stringWithFormat:@"%c", [readyString characterAtIndex:i]];
+        [arrayOfChar addObject:ichar];
+    }
+    
+    NSLog(@"array of char is %@", arrayOfChar);
     NSUInteger length = [arrayOfChar count];
     for (int j = 0; j < length; j++) {
-        if (arrayOfChar[j] != arrayOfChar[(length -1 - j)]) {
+        if (arrayOfChar[j] != (arrayOfChar[(length -1 - j)])) {
+            NSLog(@"j is %@", arrayOfChar[j]);
+            NSLog(@"last character is %@", (arrayOfChar[(length -1 - j)]));
             return NO;
         }
     }
@@ -76,10 +92,10 @@
     return YES;
 }
 
--(NSString *)convertStringForCheck:(NSString *)userEntry {
+-(NSString *)convertStringForCheck:(NSString *)textEntry {
     
     NSArray *punctuations = @[ @".", @",", @"!", @"?", @":", @";" ];
-    NSString *withoutPunctuation = [userEntry copy];
+    NSString *withoutPunctuation = [textEntry copy];
     for (NSUInteger i = 0; i < [punctuations count]; i++) {
         NSString *punctuation = punctuations[i];
         withoutPunctuation = [withoutPunctuation stringByReplacingOccurrencesOfString:punctuation withString:@""];
@@ -87,6 +103,7 @@
     NSString *spaceless = [withoutPunctuation stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString *lowercase = [spaceless lowercaseString];
     
+    NSLog(@"%@", lowercase);
     return lowercase;
 }
 
@@ -119,12 +136,10 @@
 
 // make keyboard go away
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    self.textEntry.enteredString = self.emptyTextField.text;
-    
+    // should also call the controller here???
     [self.emptyTextField resignFirstResponder];
     
     return YES;
 }
-
 
 @end

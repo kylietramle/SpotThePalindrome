@@ -18,5 +18,5 @@
 @property (strong, nonatomic) MBProgressHUD *HUD;
 
 -(BOOL)palindromeCheck:(NSString *)string;
--(NSString *)convertStringForCheck:(NSString *)userEntry;
+-(NSString *)convertStringForCheck:(NSString *)textEntry;
 @end
