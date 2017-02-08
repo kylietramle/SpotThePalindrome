@@ -26,8 +26,9 @@
     self.emptyTextField.borderStyle = UITextBorderStyleRoundedRect;
     self.emptyTextField.placeholder = @"Palindrome Meee";
     self.emptyTextField.returnKeyType = UIReturnKeyDone;
+    self.emptyTextField.delegate = self;
     
-    // button
+    // palindrome check button
     CGRect buttonRect = CGRectMake(280, 290, 100, 100);
     self.checkButton = [[UIButton alloc] initWithFrame:buttonRect];
     [self.checkButton setTitle:@"BAM" forState:UIControlStateNormal];
@@ -36,11 +37,15 @@
      forControlEvents:UIControlEventTouchUpInside];
     
     
+    // history bar button
+    UIBarButtonItem *historyButton = [[UIBarButtonItem alloc] initWithTitle:@"History" style:UIBarButtonItemStylePlain target:self action:@selector(historyButtonTapped:)];
+    self.navigationItem.rightBarButtonItem = historyButton;
+    
     [self.view addSubview:self.emptyTextField];
     [self.view addSubview:self.checkButton];
     self.view.backgroundColor = [UIColor blueColor];
     
-    self.emptyTextField.delegate = self;
+    
     
     // add tap gesture to dismiss keyboard
     UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
@@ -48,6 +53,9 @@
     tap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap];
     
+    
+}
+- (void) historyButtonTapped:(id) sender{
     
 }
 

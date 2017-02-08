@@ -20,8 +20,10 @@
      self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     TextFieldViewController *textFieldViewControler = [[TextFieldViewController alloc] init];
-    self.window.rootViewController = textFieldViewControler;
     
+    UINavigationController *masterNav = [[UINavigationController alloc] initWithRootViewController:textFieldViewControler];
+    
+    self.window.rootViewController = masterNav;
     [self.window makeKeyAndVisible];
 
     return YES;
