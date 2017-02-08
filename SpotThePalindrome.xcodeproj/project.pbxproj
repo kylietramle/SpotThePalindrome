@@ -15,7 +15,6 @@
 		614F9E0A1E3AC3FC003C9721 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 614F9E081E3AC3FC003C9721 /* LaunchScreen.storyboard */; };
 		614F9E131E3AC772003C9721 /* TextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 614F9E121E3AC772003C9721 /* TextFieldViewController.m */; };
 		614F9E161E3AC881003C9721 /* TextEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 614F9E151E3AC881003C9721 /* TextEntry.m */; };
-		61FAA2FB1E43DF33002F1795 /* PalindromeDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FAA2FA1E43DF33002F1795 /* PalindromeDisplayViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,8 +30,6 @@
 		614F9E121E3AC772003C9721 /* TextFieldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldViewController.m; sourceTree = "<group>"; };
 		614F9E141E3AC881003C9721 /* TextEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextEntry.h; sourceTree = "<group>"; };
 		614F9E151E3AC881003C9721 /* TextEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextEntry.m; sourceTree = "<group>"; };
-		61FAA2F91E43DF33002F1795 /* PalindromeDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PalindromeDisplayViewController.h; sourceTree = "<group>"; };
-		61FAA2FA1E43DF33002F1795 /* PalindromeDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PalindromeDisplayViewController.m; sourceTree = "<group>"; };
 		CB24CEB5F95CFEC85FFC8C4A /* Pods-SpotThePalindrome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotThePalindrome.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotThePalindrome/Pods-SpotThePalindrome.release.xcconfig"; sourceTree = "<group>"; };
 		CD056D482FA2375B6839A281 /* libPods-SpotThePalindrome.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SpotThePalindrome.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8B9ED19B41FFCAFBDBB20D /* Pods-SpotThePalindrome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotThePalindrome.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotThePalindrome/Pods-SpotThePalindrome.debug.xcconfig"; sourceTree = "<group>"; };
@@ -82,8 +79,6 @@
 				614F9E121E3AC772003C9721 /* TextFieldViewController.m */,
 				614F9E141E3AC881003C9721 /* TextEntry.h */,
 				614F9E151E3AC881003C9721 /* TextEntry.m */,
-				61FAA2F91E43DF33002F1795 /* PalindromeDisplayViewController.h */,
-				61FAA2FA1E43DF33002F1795 /* PalindromeDisplayViewController.m */,
 			);
 			path = SpotThePalindrome;
 			sourceTree = "<group>";
@@ -237,7 +232,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				614F9E131E3AC772003C9721 /* TextFieldViewController.m in Sources */,
-				61FAA2FB1E43DF33002F1795 /* PalindromeDisplayViewController.m in Sources */,
 				614F9DFF1E3AC3FC003C9721 /* AppDelegate.m in Sources */,
 				614F9DFC1E3AC3FC003C9721 /* main.m in Sources */,
 				614F9E161E3AC881003C9721 /* TextEntry.m in Sources */,

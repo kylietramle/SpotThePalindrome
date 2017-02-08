@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface TextEntry : NSObject
-@property (strong, nonatomic) NSString *textEntry;
+@property (strong, nonatomic) NSString *text;
+@property (nonatomic, assign) Boolean isPalindrome;
 @end

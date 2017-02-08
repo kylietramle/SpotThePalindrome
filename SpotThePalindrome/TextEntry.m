@@ -12,7 +12,8 @@
 - (id) init {
     self = [super init];
     if (self) {
-        self.textEntry = @"Nothing yet";
+        self.text = @"Nothing yet";
+        self.isPalindrome = NO;
     }
     
     return self;

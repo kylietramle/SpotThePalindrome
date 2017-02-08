@@ -9,7 +9,6 @@
 #import "TextFieldViewController.h"
 #import "TextEntry.h"
 #import "MBProgressHUD.h"
-#import "PalindromeDisplayViewController.h"
 
 @interface TextFieldViewController ()
 
@@ -19,7 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    TextEntry *textEntry = [[TextEntry alloc] init];
     
     //text field
     CGRect textFieldRect = CGRectMake(0, 0, 200, 180 );
@@ -50,24 +48,24 @@
     tap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap];
     
-    NSLog(@"%d", [self palindromeCheck: @"mommy"]);
-    NSLog(@"%d", [self palindromeCheck: @"He ll."]);
     
 }
 
 - (IBAction)checkButtonPressed:(UIButton *)sender {
-
+    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view.window animated:YES];
+    hud.label.text = @"Let's see...";
+    hud.minSize = CGSizeMake(150.f, 100.f);
+    hud.minShowTime = 2.f; // since task finished too quickly, mininum time makes sure animation stays on
+    
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
-        [self palindromeCheck:self.emptyTextField.text];
+        // run background tasks
+       [self palindromeCheck:self.emptyTextField.text];
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hideAnimated:YES];
         });
     });
     
-    PalindromeDisplayViewController *palindromeDisplayVC = [[PalindromeDisplayViewController alloc] init];
-    palindromeDisplayVC.textEntry = self.emptyTextField.text;
-    [self.navigationController pushViewController:palindromeDisplayVC animated:YES];
 }
 
 -(BOOL)palindromeCheck:(NSString *)string {
@@ -79,19 +77,20 @@
         [arrayOfChar addObject:ichar];
     }
     
-    NSLog(@"array of char is %@", arrayOfChar);
+//    NSLog(@"array of char is %@", arrayOfChar);
     NSUInteger length = [arrayOfChar count];
     for (int j = 0; j < length; j++) {
         if (arrayOfChar[j] != (arrayOfChar[(length -1 - j)])) {
-            NSLog(@"j is %@", arrayOfChar[j]);
-            NSLog(@"last character is %@", (arrayOfChar[(length -1 - j)]));
+//            NSLog(@"j is %@", arrayOfChar[j]);
+//            NSLog(@"last character is %@", (arrayOfChar[(length -1 - j)]));
             return NO;
         }
     }
-    
     return YES;
+    
 }
 
+// removes punctation, spaces, and lowercase string
 -(NSString *)convertStringForCheck:(NSString *)textEntry {
     
     NSArray *punctuations = @[ @".", @",", @"!", @"?", @":", @";" ];
@@ -103,7 +102,6 @@
     NSString *spaceless = [withoutPunctuation stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString *lowercase = [spaceless lowercaseString];
     
-    NSLog(@"%@", lowercase);
     return lowercase;
 }
 
