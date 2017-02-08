@@ -56,15 +56,32 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view.window animated:YES];
     hud.label.text = @"Let's see...";
     hud.minSize = CGSizeMake(150.f, 100.f);
-    hud.minShowTime = 2.f; // since task finished too quickly, mininum time makes sure animation stays on
+//    hud.minShowTime = 2.f; // since task finished too quickly, mininum time makes sure animation stays on
     
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
         // run background tasks
        [self palindromeCheck:self.emptyTextField.text];
+        
+        // define string to display palindrome result
+        NSMutableString *palindromeResult = [NSMutableString stringWithFormat:@""];
+        if ([self palindromeCheck:self.emptyTextField.text]) {
+            palindromeResult = @"A Palindrome!";
+        } else {
+            palindromeResult = @"Not a Palindrome!";
+        }
+
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hideAnimated:YES];
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"PalindromeNotification" message:palindromeResult preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:nil];
+            [alertController addAction:actionOk];
+            [self presentViewController:alertController animated:YES completion:nil];
         });
     });
+    
     
 }
 
