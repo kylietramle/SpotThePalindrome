@@ -7,6 +7,7 @@
 //
 
 #import "TextFieldViewController.h"
+#import "PalindromeHistoryViewController.h"
 #import "TextEntry.h"
 #import "MBProgressHUD.h"
 
@@ -24,7 +25,7 @@
     self.emptyTextField = [[UITextField alloc] initWithFrame:textFieldRect];
     self.emptyTextField.center = self.view.center;
     self.emptyTextField.borderStyle = UITextBorderStyleRoundedRect;
-    self.emptyTextField.placeholder = @"Palindrome Meee";
+    self.emptyTextField.placeholder = @"What you got?";
     self.emptyTextField.returnKeyType = UIReturnKeyDone;
     self.emptyTextField.delegate = self;
     
@@ -56,7 +57,9 @@
     
 }
 - (void) historyButtonTapped:(id) sender{
+    PalindromeHistoryViewController *palindromeHistoryVC = [[PalindromeHistoryViewController alloc] init];
     
+    [self presentViewController:palindromeHistoryVC animated:YES completion:nil];
 }
 
 - (IBAction)checkButtonPressed:(UIButton *)sender {
@@ -64,7 +67,6 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view.window animated:YES];
     hud.label.text = @"Let's see...";
     hud.minSize = CGSizeMake(150.f, 100.f);
-//    hud.minShowTime = 2.f; // since task finished too quickly, mininum time makes sure animation stays on
     
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
         // run background tasks

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "TextFieldViewController.h"
+#import "PalindromeHistoryViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +21,7 @@
      self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     TextFieldViewController *textFieldViewControler = [[TextFieldViewController alloc] init];
+//    PalindromeHistoryViewController *palindromeHistoryVC = [[PalindromeHistoryViewController alloc] init];
     
     UINavigationController *masterNav = [[UINavigationController alloc] initWithRootViewController:textFieldViewControler];
     
