@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Realm/Realm.h>
 
-@interface TextEntry : NSObject
+@interface TextEntry : RLMObject
 @property (strong, nonatomic) NSString *text;
 @property (nonatomic, assign) Boolean isPalindrome;
 @end

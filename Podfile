@@ -7,5 +7,6 @@ target 'SpotThePalindrome' do
 
   # Pods for SpotThePalindrome
 pod 'MBProgressHUD', '~> 1.0.0'
+pod 'Realm'
 
 end

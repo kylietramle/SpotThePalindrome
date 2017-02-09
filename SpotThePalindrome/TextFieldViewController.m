@@ -10,6 +10,7 @@
 #import "PalindromeHistoryViewController.h"
 #import "TextEntry.h"
 #import "MBProgressHUD.h"
+#import <Realm/Realm.h>
 
 @interface TextFieldViewController ()
 
@@ -72,18 +73,38 @@
         // run background tasks
        [self palindromeCheck:self.emptyTextField.text];
         
-        // define string to display palindrome result
-        NSMutableString *palindromeResult = [NSMutableString stringWithFormat:@""];
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        
+        // initialize textentry to display palindrome result
         if ([self palindromeCheck:self.emptyTextField.text]) {
-            palindromeResult = @"A Palindrome!";
+            TextEntry *aPalindrome = [[TextEntry alloc] init];
+            aPalindrome.text = self.emptyTextField.text;
+            aPalindrome.isPalindrome = YES;
+            
+            [realm transactionWithBlock:^{
+                [realm addObject:aPalindrome];
+            }];
         } else {
-            palindromeResult = @"Not a Palindrome!";
+            TextEntry *notPalindrome = [[TextEntry alloc] init];
+            notPalindrome.text = self.emptyTextField.text;
+            notPalindrome.isPalindrome = NO;
+            
+            [realm transactionWithBlock:^{
+                [realm addObject:notPalindrome];
+            }];
         }
 
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hideAnimated:YES];
             
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"PalindromeNotification" message:palindromeResult preferredStyle:UIAlertControllerStyleAlert];
+            NSMutableString *palindromeNotification = [[NSMutableString alloc] init];
+            if ([self palindromeCheck:self.emptyTextField.text]) {
+                palindromeNotification = @"A Palindrome!";
+            } else {
+                palindromeNotification = @"Not a Palindrome!";
+            }
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"PalindromeNotification" message: palindromeNotification  preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
                                                                style:UIAlertActionStyleDefault
                                                              handler:nil];
