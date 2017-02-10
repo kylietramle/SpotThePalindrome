@@ -11,5 +11,5 @@
 
 @interface TextEntry : RLMObject
 @property (strong, nonatomic) NSString *text;
-@property (nonatomic, assign) Boolean isPalindrome;
+@property (nonatomic, assign) BOOL isPalindrome;
 @end

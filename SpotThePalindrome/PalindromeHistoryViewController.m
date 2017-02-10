@@ -7,6 +7,8 @@
 //
 
 #import "PalindromeHistoryViewController.h"
+#import <Realm/Realm.h>
+#import "TextEntry.h"
 
 @interface PalindromeHistoryViewController ()
 
@@ -34,6 +36,9 @@
     [collectionView addSubview:closeButton];
     [self.view addSubview:collectionView];
     collectionView.backgroundColor = [UIColor yellowColor];
+    
+    RLMResults<TextEntry *> *palindromeArray = [TextEntry allObjects];
+    NSLog(@"%@", palindromeArray);
 }
 
 - (IBAction)closeButtonTapped:(UIButton *)sender {

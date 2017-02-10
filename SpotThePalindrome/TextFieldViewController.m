@@ -55,6 +55,7 @@
     tap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap];
     
+    // NSLog(@"%@",[RLMRealmConfiguration defaultConfiguration].fileURL); <-- prints out realm url
     
 }
 - (void) historyButtonTapped:(id) sender{
@@ -84,6 +85,7 @@
             [realm transactionWithBlock:^{
                 [realm addObject:aPalindrome];
             }];
+            NSLog(@"%@", aPalindrome);
         } else {
             TextEntry *notPalindrome = [[TextEntry alloc] init];
             notPalindrome.text = self.emptyTextField.text;
@@ -92,6 +94,7 @@
             [realm transactionWithBlock:^{
                 [realm addObject:notPalindrome];
             }];
+            NSLog(@"%@", notPalindrome);
         }
 
         dispatch_async(dispatch_get_main_queue(), ^{
