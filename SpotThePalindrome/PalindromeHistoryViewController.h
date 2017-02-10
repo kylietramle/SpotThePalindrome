@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface PalindromeHistoryViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
-
+@property (strong, nonatomic) NSMutableArray *palindromeArray;
 @end

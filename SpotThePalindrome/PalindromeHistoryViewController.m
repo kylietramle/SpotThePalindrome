@@ -37,8 +37,12 @@
     [self.view addSubview:collectionView];
     collectionView.backgroundColor = [UIColor yellowColor];
     
-    RLMResults<TextEntry *> *palindromeArray = [TextEntry allObjects];
-    NSLog(@"%@", palindromeArray);
+    RLMResults<TextEntry *> *tempPalindromeArray = [TextEntry allObjects];
+    for (RLMObject *palindrome in tempPalindromeArray) {
+        NSLog(@"%@", palindrome);
+    }
+    
+
 }
 
 - (IBAction)closeButtonTapped:(UIButton *)sender {
