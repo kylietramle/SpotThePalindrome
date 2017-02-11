@@ -11,6 +11,7 @@
 #import "TextEntry.h"
 #import "MBProgressHUD.h"
 #import <Realm/Realm.h>
+#import "PalindromeHistory.h"
 
 @interface TextFieldViewController ()
 
@@ -74,29 +75,17 @@
         // run background tasks
        [self palindromeCheck:self.emptyTextField.text];
         
-        RLMRealm *realm = [RLMRealm defaultRealm];
-        
+        PalindromeHistory *sharedPalindromeHistoryManager = [PalindromeHistory sharedPalindromeHistoryManager];
+        BOOL isPalindrome;
         // initialize textentry to display palindrome result
         if ([self palindromeCheck:self.emptyTextField.text]) {
-            TextEntry *aPalindrome = [[TextEntry alloc] init];
-            aPalindrome.text = self.emptyTextField.text;
-            aPalindrome.isPalindrome = YES;
-            
-            [realm transactionWithBlock:^{
-                [realm addObject:aPalindrome];
-            }];
-            NSLog(@"%@", aPalindrome);
-        } else {
-            TextEntry *notPalindrome = [[TextEntry alloc] init];
-            notPalindrome.text = self.emptyTextField.text;
-            notPalindrome.isPalindrome = NO;
-            
-            [realm transactionWithBlock:^{
-                [realm addObject:notPalindrome];
-            }];
-            NSLog(@"%@", notPalindrome);
-        }
+            isPalindrome = YES;
 
+        } else {
+            isPalindrome = NO;
+        }
+        [sharedPalindromeHistoryManager addPalindromeEntry:(self.emptyTextField.text) withResult:&isPalindrome];
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hideAnimated:YES];
             

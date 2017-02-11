@@ -9,6 +9,7 @@
 #import "PalindromeHistoryViewController.h"
 #import <Realm/Realm.h>
 #import "TextEntry.h"
+#import "PalindromeHistory.h"
 
 @interface PalindromeHistoryViewController ()
 
@@ -36,13 +37,13 @@
     [collectionView addSubview:closeButton];
     [self.view addSubview:collectionView];
     collectionView.backgroundColor = [UIColor yellowColor];
-    
-    RLMResults<TextEntry *> *tempPalindromeArray = [TextEntry allObjects];
-    for (RLMObject *palindrome in tempPalindromeArray) {
-        NSLog(@"%@", palindrome);
-    }
-    
 
+
+}
+-(void)viewWillAppear:(BOOL)animated {
+    PalindromeHistory *sharedPalindromeHistoryManager = [PalindromeHistory sharedPalindromeHistoryManager];
+    self.palindromeArray = [sharedPalindromeHistoryManager getPalindromeArray];
+    NSLog(@"%@", self.palindromeArray);
 }
 
 - (IBAction)closeButtonTapped:(UIButton *)sender {
@@ -53,13 +54,26 @@
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.backgroundColor = [UIColor greenColor];
+    TextEntry *textAtIndexPath = self.palindromeArray[indexPath.row];
     
+    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 60, 70, 30)];
+    textLabel.text = textAtIndexPath.text;
+    UILabel *booleanLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 60, 70, 30)];
+    if (textAtIndexPath.isPalindrome == 0) {
+        booleanLabel.text = @"No";
+    } else {
+        booleanLabel.text = @"Yes";
+    }
+    
+    [cell.contentView addSubview:textLabel];
+    [cell.contentView addSubview:booleanLabel];
+    
+    cell.backgroundColor = [UIColor greenColor];
     return cell;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return self.palindromeArray.count;
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
