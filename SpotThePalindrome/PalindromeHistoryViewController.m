@@ -43,7 +43,7 @@
 -(void)viewWillAppear:(BOOL)animated {
     PalindromeHistory *sharedPalindromeHistoryManager = [PalindromeHistory sharedPalindromeHistoryManager];
     self.palindromeArray = [sharedPalindromeHistoryManager getPalindromeArray];
-    NSLog(@"%@", self.palindromeArray);
+//    NSLog(@"%@", self.palindromeArray);
 }
 
 - (IBAction)closeButtonTapped:(UIButton *)sender {
@@ -59,7 +59,7 @@
     UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 60, 70, 30)];
     textLabel.text = textAtIndexPath.text;
     UILabel *booleanLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 60, 70, 30)];
-    if (textAtIndexPath.isPalindrome == 0) {
+    if (textAtIndexPath.isPalindrome == NO) {
         booleanLabel.text = @"No";
     } else {
         booleanLabel.text = @"Yes";

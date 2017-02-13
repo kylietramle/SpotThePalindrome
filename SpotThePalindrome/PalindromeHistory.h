@@ -15,6 +15,6 @@ RLM_ARRAY_TYPE(TextEntry)
 @property RLMArray<TextEntry *><TextEntry> *textEntries;
 
 + (id)sharedPalindromeHistoryManager;
-- (void)addPalindromeEntry:(NSString *)textEntry withResult:(BOOL *)isPalindrome;
+- (void)addPalindromeEntry:(NSString *)textEntry withResult:(BOOL)isPalindrome;
 - (NSMutableArray *)getPalindromeArray;
 @end

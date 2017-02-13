@@ -73,24 +73,18 @@
     
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
         // run background tasks
-       [self palindromeCheck:self.emptyTextField.text];
+       BOOL palindromeResult = [self palindromeCheck:self.emptyTextField.text];
+        NSLog(@"%d", palindromeResult);
         
         PalindromeHistory *sharedPalindromeHistoryManager = [PalindromeHistory sharedPalindromeHistoryManager];
-        BOOL isPalindrome;
-        // initialize textentry to display palindrome result
-        if ([self palindromeCheck:self.emptyTextField.text]) {
-            isPalindrome = YES;
-
-        } else {
-            isPalindrome = NO;
-        }
-        [sharedPalindromeHistoryManager addPalindromeEntry:(self.emptyTextField.text) withResult:&isPalindrome];
+        
+        [sharedPalindromeHistoryManager addPalindromeEntry:(self.emptyTextField.text) withResult:palindromeResult];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hideAnimated:YES];
             
             NSMutableString *palindromeNotification = [[NSMutableString alloc] init];
-            if ([self palindromeCheck:self.emptyTextField.text]) {
+            if (palindromeResult == YES) {
                 palindromeNotification = @"A Palindrome!";
             } else {
                 palindromeNotification = @"Not a Palindrome!";

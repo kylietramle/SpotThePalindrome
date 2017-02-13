@@ -11,10 +11,12 @@
 
 @implementation PalindromeHistory
 
-- (void)addPalindromeEntry:(NSString *)textEntry withResult:(BOOL *)isPalindrome {
+- (void)addPalindromeEntry:(NSString *)textEntry withResult:(BOOL)isPalindrome {
     TextEntry *palindromeObject = [[TextEntry alloc] init];
     palindromeObject.text = textEntry;
+    NSLog(@"%@", palindromeObject.text);
     palindromeObject.isPalindrome = isPalindrome;
+    NSLog(@"%d", isPalindrome);
     
     RLMRealm *realm = [RLMRealm defaultRealm];
         
@@ -23,8 +25,10 @@
         }];
 }
 
+
 - (NSMutableArray *)getPalindromeArray {
     RLMResults<TextEntry *> *tempPalindromeArray = [TextEntry allObjects];
+    NSLog(@"%@", tempPalindromeArray);
     
     NSMutableArray *palindromeArray = [[NSMutableArray alloc] init];
     for (RLMObject *palindrome in tempPalindromeArray) {
