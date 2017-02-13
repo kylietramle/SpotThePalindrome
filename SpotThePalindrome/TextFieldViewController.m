@@ -48,8 +48,6 @@
     [self.view addSubview:self.checkButton];
     self.view.backgroundColor = [UIColor blueColor];
     
-    
-    
     // add tap gesture to dismiss keyboard
     UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
               initWithTarget:self action:@selector(handleSingleTap:)];
@@ -72,9 +70,9 @@
     hud.minSize = CGSizeMake(150.f, 100.f);
     
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
-        // run background tasks
+        
+        // run palindrome test in the background
        BOOL palindromeResult = [self palindromeCheck:self.emptyTextField.text];
-        NSLog(@"%d", palindromeResult);
         
         PalindromeHistory *sharedPalindromeHistoryManager = [PalindromeHistory sharedPalindromeHistoryManager];
         
@@ -83,13 +81,15 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hideAnimated:YES];
             
-            NSMutableString *palindromeNotification = [[NSMutableString alloc] init];
+            // Alert condition
+            NSString *palindromeNotification = [[NSString alloc] init];
             if (palindromeResult == YES) {
                 palindromeNotification = @"A Palindrome!";
             } else {
                 palindromeNotification = @"Not a Palindrome!";
             }
             
+            // Alert message controller
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"PalindromeNotification" message: palindromeNotification  preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
                                                                style:UIAlertActionStyleDefault
@@ -103,20 +103,20 @@
 }
 
 -(BOOL)palindromeCheck:(NSString *)string {
+    // make sure string is ready to be checked
     NSMutableString *readyString = [[self convertStringForCheck:string] mutableCopy];
     
+    // separate string into characters
     NSMutableArray *arrayOfChar = [[NSMutableArray alloc] initWithCapacity:[readyString length]];
     for (int i=0; i < [readyString length]; i++) {
         NSString *ichar  = [NSString stringWithFormat:@"%c", [readyString characterAtIndex:i]];
         [arrayOfChar addObject:ichar];
     }
     
-//    NSLog(@"array of char is %@", arrayOfChar);
+    // check for palindrome characteristics
     NSUInteger length = [arrayOfChar count];
     for (int j = 0; j < length; j++) {
         if (arrayOfChar[j] != (arrayOfChar[(length -1 - j)])) {
-//            NSLog(@"j is %@", arrayOfChar[j]);
-//            NSLog(@"last character is %@", (arrayOfChar[(length -1 - j)]));
             return NO;
         }
     }
@@ -168,7 +168,8 @@
 
 // make keyboard go away
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    // should also call the controller here???
+    
+    [self checkButtonPressed: self.checkButton];
     [self.emptyTextField resignFirstResponder];
     
     return YES;

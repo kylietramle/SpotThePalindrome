@@ -11,12 +11,12 @@
 
 @implementation PalindromeHistory
 
+// add new text entry/palindrome object into realm db
 - (void)addPalindromeEntry:(NSString *)textEntry withResult:(BOOL)isPalindrome {
+    
     TextEntry *palindromeObject = [[TextEntry alloc] init];
     palindromeObject.text = textEntry;
-    NSLog(@"%@", palindromeObject.text);
     palindromeObject.isPalindrome = isPalindrome;
-    NSLog(@"%d", isPalindrome);
     
     RLMRealm *realm = [RLMRealm defaultRealm];
         
@@ -25,10 +25,10 @@
         }];
 }
 
-
+// fetch all realm palindrome objects
 - (NSMutableArray *)getPalindromeArray {
+    
     RLMResults<TextEntry *> *tempPalindromeArray = [TextEntry allObjects];
-    NSLog(@"%@", tempPalindromeArray);
     
     NSMutableArray *palindromeArray = [[NSMutableArray alloc] init];
     for (RLMObject *palindrome in tempPalindromeArray) {
@@ -40,6 +40,7 @@
 
 // singleton
 + (id)sharedPalindromeHistoryManager {
+    
     static PalindromeHistory *sharedMyManager = nil;
     @synchronized(self) {
         if (sharedMyManager == nil)

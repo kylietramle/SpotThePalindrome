@@ -43,7 +43,6 @@
 -(void)viewWillAppear:(BOOL)animated {
     PalindromeHistory *sharedPalindromeHistoryManager = [PalindromeHistory sharedPalindromeHistoryManager];
     self.palindromeArray = [sharedPalindromeHistoryManager getPalindromeArray];
-//    NSLog(@"%@", self.palindromeArray);
 }
 
 - (IBAction)closeButtonTapped:(UIButton *)sender {
@@ -56,9 +55,12 @@
     
     TextEntry *textAtIndexPath = self.palindromeArray[indexPath.row];
     
-    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 60, 70, 30)];
+    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 60, 60, 30)];
     textLabel.text = textAtIndexPath.text;
-    UILabel *booleanLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 60, 70, 30)];
+    [textLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
+    
+    UILabel *booleanLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 60, 60, 30)];
+    [booleanLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
     if (textAtIndexPath.isPalindrome == NO) {
         booleanLabel.text = @"No";
     } else {
@@ -82,9 +84,6 @@
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(50, 10, 30, 10);
-}
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"indexPath is %@", indexPath);
 }
 
 @end
