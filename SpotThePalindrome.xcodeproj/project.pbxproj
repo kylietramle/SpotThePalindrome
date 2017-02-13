@@ -74,6 +74,7 @@
 		614F9DF91E3AC3FC003C9721 /* SpotThePalindrome */ = {
 			isa = PBXGroup;
 			children = (
+				61C463351E5177CE00F81CCA /* Controllers */,
 				614F9DFD1E3AC3FC003C9721 /* AppDelegate.h */,
 				614F9DFE1E3AC3FC003C9721 /* AppDelegate.m */,
 				614F9E031E3AC3FC003C9721 /* Main.storyboard */,
@@ -81,12 +82,8 @@
 				614F9E081E3AC3FC003C9721 /* LaunchScreen.storyboard */,
 				614F9E0B1E3AC3FC003C9721 /* Info.plist */,
 				614F9DFA1E3AC3FC003C9721 /* Supporting Files */,
-				614F9E111E3AC772003C9721 /* TextFieldViewController.h */,
-				614F9E121E3AC772003C9721 /* TextFieldViewController.m */,
 				614F9E141E3AC881003C9721 /* TextEntry.h */,
 				614F9E151E3AC881003C9721 /* TextEntry.m */,
-				61C4632F1E4BE83300F81CCA /* PalindromeHistoryViewController.h */,
-				61C463301E4BE83300F81CCA /* PalindromeHistoryViewController.m */,
 				61C463321E4E91B000F81CCA /* PalindromeHistory.h */,
 				61C463331E4E91B000F81CCA /* PalindromeHistory.m */,
 			);
@@ -99,6 +96,17 @@
 				614F9DFB1E3AC3FC003C9721 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		61C463351E5177CE00F81CCA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				614F9E111E3AC772003C9721 /* TextFieldViewController.h */,
+				614F9E121E3AC772003C9721 /* TextFieldViewController.m */,
+				61C4632F1E4BE83300F81CCA /* PalindromeHistoryViewController.h */,
+				61C463301E4BE83300F81CCA /* PalindromeHistoryViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		7CB3CF807B4DDD2DA689F451 /* Pods */ = {

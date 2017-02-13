@@ -37,9 +37,10 @@
     [collectionView addSubview:closeButton];
     [self.view addSubview:collectionView];
     collectionView.backgroundColor = [UIColor yellowColor];
-
-
+    self.view.backgroundColor  = [UIColor yellowColor];
 }
+
+// get all the palindromes everytime view appears to load them
 -(void)viewWillAppear:(BOOL)animated {
     PalindromeHistory *sharedPalindromeHistoryManager = [PalindromeHistory sharedPalindromeHistoryManager];
     self.palindromeArray = [sharedPalindromeHistoryManager getPalindromeArray];
@@ -55,11 +56,11 @@
     
     TextEntry *textAtIndexPath = self.palindromeArray[indexPath.row];
     
-    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 60, 60, 30)];
+    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 60, 80, 30)];
     textLabel.text = textAtIndexPath.text;
     [textLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
     
-    UILabel *booleanLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 60, 60, 30)];
+    UILabel *booleanLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 60, 60, 30)];
     [booleanLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
     if (textAtIndexPath.isPalindrome == NO) {
         booleanLabel.text = @"No";
