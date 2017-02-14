@@ -31,14 +31,18 @@
     self.emptyTextField.returnKeyType = UIReturnKeyDone;
     self.emptyTextField.delegate = self;
     
+    [self.emptyTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
     // palindrome check button
     CGRect buttonRect = CGRectMake(280, 290, 100, 100);
     self.checkButton = [[UIButton alloc] initWithFrame:buttonRect];
     [self.checkButton setTitle:@"BAM" forState:UIControlStateNormal];
+    self.checkButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     [self.checkButton addTarget:self
                action:@selector(checkButtonPressed:)
      forControlEvents:UIControlEventTouchUpInside];
     
+    [self.checkButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     // history bar button
     UIBarButtonItem *historyButton = [[UIBarButtonItem alloc] initWithTitle:@"History" style:UIBarButtonItemStylePlain target:self action:@selector(historyButtonTapped:)];
@@ -57,6 +61,65 @@
     // NSLog(@"%@",[RLMRealmConfiguration defaultConfiguration].fileURL); <-- prints out realm url
     
 }
+- (void)viewWillLayoutSubviews {
+    
+    // constraints
+    NSLayoutConstraint *constraint = [NSLayoutConstraint
+                                      constraintWithItem:self.emptyTextField
+                                      attribute: NSLayoutAttributeCenterY
+                                      relatedBy: NSLayoutRelationEqual
+                                      toItem: self.view
+                                      attribute: NSLayoutAttributeCenterY
+                                      multiplier: 1
+                                      constant: 0];
+    
+    [self.view addConstraint:constraint];
+    
+    constraint = [NSLayoutConstraint
+                  constraintWithItem:self.checkButton
+                  attribute: NSLayoutAttributeCenterY
+                  relatedBy: NSLayoutRelationEqual
+                  toItem: self.view
+                  attribute: NSLayoutAttributeCenterY
+                  multiplier: 1
+                  constant: 0];
+    
+    [self.view addConstraint:constraint];
+    
+    constraint = [NSLayoutConstraint
+                  constraintWithItem:self.emptyTextField
+                  attribute: NSLayoutAttributeLeft
+                  relatedBy: NSLayoutRelationEqual
+                  toItem: self.view
+                  attribute: NSLayoutAttributeLeft
+                  multiplier: 1
+                  constant: 40];
+    
+    [self.view addConstraint:constraint];
+    
+    constraint = [NSLayoutConstraint
+                  constraintWithItem: self.checkButton
+                  attribute: NSLayoutAttributeLeading
+                  relatedBy: NSLayoutRelationEqual
+                  toItem: self.emptyTextField
+                  attribute: NSLayoutAttributeTrailing
+                  multiplier: 1
+                  constant: 80];
+    
+    [self.view addConstraint:constraint];
+    
+    constraint = [NSLayoutConstraint
+                  constraintWithItem:self.checkButton
+                  attribute: NSLayoutAttributeBaseline
+                  relatedBy: NSLayoutRelationEqual
+                  toItem: self.emptyTextField
+                  attribute: NSLayoutAttributeBaseline
+                  multiplier: 1
+                  constant: 0];
+    
+    [self.view addConstraint:constraint];
+}
+
 - (void) historyButtonTapped:(id) sender{
     PalindromeHistoryViewController *palindromeHistoryVC = [[PalindromeHistoryViewController alloc] init];
     
