@@ -21,12 +21,12 @@
     [super viewDidLoad];
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     
-    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:flowLayout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:flowLayout];
     
-    collectionView.delegate = self;
-    collectionView.dataSource = self;
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
     
-    [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     
     // button to dismiss history view
     UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -34,9 +34,9 @@
     [closeButton setTitle:@"Back" forState:UIControlStateNormal];
     [closeButton addTarget:self action:@selector(closeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
-    [collectionView addSubview:closeButton];
-    [self.view addSubview:collectionView];
-    collectionView.backgroundColor = [UIColor yellowColor];
+    [self.collectionView addSubview:closeButton];
+    [self.view addSubview:self.collectionView];
+    self.collectionView.backgroundColor = [UIColor yellowColor];
     self.view.backgroundColor  = [UIColor yellowColor];
 }
 
@@ -46,33 +46,90 @@
     self.palindromeArray = [sharedPalindromeHistoryManager getPalindromeArray];
 }
 
+
 - (IBAction)closeButtonTapped:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    self.cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
     TextEntry *textAtIndexPath = self.palindromeArray[indexPath.row];
     
-    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 60, 80, 30)];
-    textLabel.text = textAtIndexPath.text;
-    [textLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
+    self.textLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 60, 80, 30)];
+    self.textLabel.text = textAtIndexPath.text;
+    [self.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
     
-    UILabel *booleanLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 60, 60, 30)];
-    [booleanLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
+    self.booleanLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 60, 60, 30)];
+    [self.booleanLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
+
+    
     if (textAtIndexPath.isPalindrome == NO) {
-        booleanLabel.text = @"No";
+        self.booleanLabel.text = @"No";
     } else {
-        booleanLabel.text = @"Yes";
+        self.booleanLabel.text = @"Yes";
     }
     
-    [cell.contentView addSubview:textLabel];
-    [cell.contentView addSubview:booleanLabel];
+    [self.textLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.booleanLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    cell.backgroundColor = [UIColor greenColor];
-    return cell;
+    [self.cell.contentView addSubview:self.textLabel];
+    [self.cell.contentView addSubview:self.booleanLabel];
+    
+    self.cell.backgroundColor = [UIColor greenColor];
+    
+    // vertically-centered constraints for textLabel
+    NSLayoutConstraint *constraint = [NSLayoutConstraint
+                                      constraintWithItem: self.textLabel
+                                      attribute: NSLayoutAttributeCenterY
+                                      relatedBy: NSLayoutRelationEqual
+                                      toItem: self.cell
+                                      attribute: NSLayoutAttributeCenterY
+                                      multiplier: 1
+                                      constant: 0];
+    
+    [self.cell addConstraint:constraint];
+    
+    // booleanLabel constraint to same line as textLabel
+        constraint = [NSLayoutConstraint
+                        constraintWithItem: self.booleanLabel
+                        attribute: NSLayoutAttributeBaseline
+                        relatedBy: NSLayoutRelationEqual
+                        toItem: self.textLabel
+                        attribute: NSLayoutAttributeBaseline
+                        multiplier: 1
+                        constant: 0];
+    
+    [self.cell addConstraint:constraint];
+    
+    // left constraint for textLabel
+    constraint = [NSLayoutConstraint
+                  constraintWithItem:self.textLabel
+                  attribute: NSLayoutAttributeLeft
+                  relatedBy: NSLayoutRelationEqual
+                  toItem: self.cell
+                  attribute: NSLayoutAttributeLeft
+                  multiplier: 1
+                  constant: 10];
+    
+    [self.cell addConstraint:constraint];
+    
+    // right constraint for booleanLabel
+    constraint = [NSLayoutConstraint
+                  constraintWithItem: self.booleanLabel
+                  attribute: NSLayoutAttributeRight
+                  relatedBy: NSLayoutRelationEqual
+                  toItem: self.cell
+                  attribute: NSLayoutAttributeRight
+                  multiplier: 1
+                  constant: -10];
+    
+    [self.cell addConstraint:constraint];
+
+
+
+    return self.cell;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

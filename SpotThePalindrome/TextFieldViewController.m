@@ -63,7 +63,7 @@
 }
 - (void)viewWillLayoutSubviews {
     
-    // constraints
+    // constraint textField to be vertically centered
     NSLayoutConstraint *constraint = [NSLayoutConstraint
                                       constraintWithItem:self.emptyTextField
                                       attribute: NSLayoutAttributeCenterY
@@ -75,6 +75,7 @@
     
     [self.view addConstraint:constraint];
     
+    // left constraint for text field
     constraint = [NSLayoutConstraint
                   constraintWithItem:self.emptyTextField
                   attribute: NSLayoutAttributeLeft
@@ -86,6 +87,7 @@
     
     [self.view addConstraint:constraint];
     
+    // right constraint for check button
     constraint = [NSLayoutConstraint
                   constraintWithItem: self.checkButton
                   attribute: NSLayoutAttributeRight
@@ -97,6 +99,7 @@
     
     [self.view addConstraint:constraint];
     
+    // constraint to make sure button is on same line as textfield
     constraint = [NSLayoutConstraint
                   constraintWithItem:self.checkButton
                   attribute: NSLayoutAttributeBaseline
