@@ -76,35 +76,24 @@
     [self.view addConstraint:constraint];
     
     constraint = [NSLayoutConstraint
-                  constraintWithItem:self.checkButton
-                  attribute: NSLayoutAttributeCenterY
-                  relatedBy: NSLayoutRelationEqual
-                  toItem: self.view
-                  attribute: NSLayoutAttributeCenterY
-                  multiplier: 1
-                  constant: 0];
-    
-    [self.view addConstraint:constraint];
-    
-    constraint = [NSLayoutConstraint
                   constraintWithItem:self.emptyTextField
                   attribute: NSLayoutAttributeLeft
                   relatedBy: NSLayoutRelationEqual
                   toItem: self.view
                   attribute: NSLayoutAttributeLeft
                   multiplier: 1
-                  constant: 40];
+                  constant: 50];
     
     [self.view addConstraint:constraint];
     
     constraint = [NSLayoutConstraint
                   constraintWithItem: self.checkButton
-                  attribute: NSLayoutAttributeLeading
+                  attribute: NSLayoutAttributeRight
                   relatedBy: NSLayoutRelationEqual
-                  toItem: self.emptyTextField
-                  attribute: NSLayoutAttributeTrailing
+                  toItem: self.view
+                  attribute: NSLayoutAttributeRight
                   multiplier: 1
-                  constant: 80];
+                  constant: -50];
     
     [self.view addConstraint:constraint];
     
