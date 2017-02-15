@@ -146,4 +146,9 @@
     return UIEdgeInsetsMake(50, 10, 30, 10);
 }
 
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
+{
+    return YES;
+}
+
 @end
