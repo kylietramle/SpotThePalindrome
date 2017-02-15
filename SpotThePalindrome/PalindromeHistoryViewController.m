@@ -30,14 +30,16 @@
     
     // button to dismiss history view
     UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    closeButton.frame = CGRectMake(15, 15, 50, 30);
+    closeButton.frame = CGRectMake(10, 15, 50, 30);
     [closeButton setTitle:@"Back" forState:UIControlStateNormal];
+    [closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [closeButton addTarget:self action:@selector(closeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
     
     [self.collectionView addSubview:closeButton];
     [self.view addSubview:self.collectionView];
-    self.collectionView.backgroundColor = [UIColor yellowColor];
-    self.view.backgroundColor  = [UIColor yellowColor];
+    self.collectionView.backgroundColor = [UIColor colorWithRed:131/255.0 green:175/255.0 blue:155/255.0 alpha:1.0];
+    self.view.backgroundColor  = [UIColor colorWithRed:131/255.0 green:175/255.0 blue:155/255.0 alpha:1.0];;
 }
 
 // get all the palindromes everytime view appears to load them
@@ -77,7 +79,7 @@
     [self.cell.contentView addSubview:self.textLabel];
     [self.cell.contentView addSubview:self.booleanLabel];
     
-    self.cell.backgroundColor = [UIColor greenColor];
+    self.cell.backgroundColor = [UIColor colorWithRed:222/255.0 green:228/255.0 blue:213/255.0 alpha:1.0];
     
     // vertically-centered constraints for textLabel
     NSLayoutConstraint *constraint = [NSLayoutConstraint

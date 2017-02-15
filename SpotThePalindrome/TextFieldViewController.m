@@ -36,7 +36,8 @@
     // palindrome check button
     CGRect buttonRect = CGRectMake(280, 290, 100, 100);
     self.checkButton = [[UIButton alloc] initWithFrame:buttonRect];
-    [self.checkButton setTitle:@"BAM" forState:UIControlStateNormal];
+    UIImage *checkButtonImage = [UIImage imageNamed:@"arrow-big-2.png"];
+    [self.checkButton setImage:checkButtonImage forState:UIControlStateNormal];
     self.checkButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     [self.checkButton addTarget:self
                action:@selector(checkButtonPressed:)
@@ -46,19 +47,18 @@
     
     // history bar button
     UIBarButtonItem *historyButton = [[UIBarButtonItem alloc] initWithTitle:@"History" style:UIBarButtonItemStylePlain target:self action:@selector(historyButtonTapped:)];
+    [historyButton setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName] forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = historyButton;
     
     [self.view addSubview:self.emptyTextField];
     [self.view addSubview:self.checkButton];
-    self.view.backgroundColor = [UIColor blueColor];
+    self.view.backgroundColor = [UIColor colorWithRed:131/255.0 green:175/255.0 blue:155/255.0 alpha:1.0];
     
     // add tap gesture to dismiss keyboard
     UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
               initWithTarget:self action:@selector(handleSingleTap:)];
     tap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap];
-    
-    // NSLog(@"%@",[RLMRealmConfiguration defaultConfiguration].fileURL); <-- prints out realm url
     
 }
 - (void)viewWillLayoutSubviews {
@@ -75,6 +75,18 @@
     
     [self.view addConstraint:constraint];
     
+    // constraint button to be vertically centered
+    constraint = [NSLayoutConstraint
+                  constraintWithItem:self.checkButton
+                  attribute: NSLayoutAttributeCenterY
+                  relatedBy: NSLayoutRelationEqual
+                  toItem: self.view
+                  attribute: NSLayoutAttributeCenterY
+                  multiplier: 1
+                  constant: 0];
+    
+    [self.view addConstraint:constraint];
+    
     // left constraint for text field
     constraint = [NSLayoutConstraint
                   constraintWithItem:self.emptyTextField
@@ -83,7 +95,7 @@
                   toItem: self.view
                   attribute: NSLayoutAttributeLeft
                   multiplier: 1
-                  constant: 50];
+                  constant: 60];
     
     [self.view addConstraint:constraint];
     
@@ -95,21 +107,10 @@
                   toItem: self.view
                   attribute: NSLayoutAttributeRight
                   multiplier: 1
-                  constant: -50];
+                  constant: -60];
     
     [self.view addConstraint:constraint];
     
-    // constraint to make sure button is on same line as textfield
-    constraint = [NSLayoutConstraint
-                  constraintWithItem:self.checkButton
-                  attribute: NSLayoutAttributeBaseline
-                  relatedBy: NSLayoutRelationEqual
-                  toItem: self.emptyTextField
-                  attribute: NSLayoutAttributeBaseline
-                  multiplier: 1
-                  constant: 0];
-    
-    [self.view addConstraint:constraint];
 }
 
 - (void) historyButtonTapped:(id) sender{
